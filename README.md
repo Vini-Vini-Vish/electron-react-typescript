@@ -65,6 +65,7 @@ https://www.mongodb.com/try/download/community
 
 # instale o yarn pelo comando no terminal
 
+npm install --global yarn
 yarn
 
 # compile o projeto como desenvolvedor
