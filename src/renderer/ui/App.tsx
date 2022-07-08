@@ -1,16 +1,42 @@
 import React, { useEffect, useState } from "react"
-
-import { getDate } from "../../common/getDate"
-
 import styles from "./App.module.scss"
 import logo from "../public/logo192.png"
 
 export const App: React.FC = () => {
 
   const [infoItem, setinfoItem] = useState<any>([])
-  const [iId, setitemId] = useState<string>(``)
+  const [infoId, setinfoId] = useState<string>(``)
+
+  const listItems = async () => {
+    await findAllItems().then((data) => {
+      setinfoItem({ ...data })
+    })
+  }
   
+  useEffect(() => {
+    listItems()
+  }, [])
   
+  const CreateItem = async(itemName: string) => {
+    const item = {"itemName": itemName}
+    await createItem(item)
+    await listItems()
+  }
+  const UpdateItem = async(itemId: string, itemName: string) => {
+    const item = {"itemName": itemName}
+    await updateItem(item)
+    await listItems()
+  }
+
+  const ExcludeItem = async(itemId: string) => {
+    await excludeItem(itemId)
+    await listItems()
+  }
+
+  const Selection = async(id: string) => {
+    setinfoId(id)
+    await listItems()
+  }
 
   return (
     <div className={styles.app}>
@@ -24,11 +50,13 @@ export const App: React.FC = () => {
 
       <div className="cad">
         <p>Realizar um cadasto:</p>
+        <InfoItem infoItem={infoItem} Selection={Selection}/>
         <button>Cadastrar</button>
       </div>
       
       <div className="listCad">
         <p>Lista de Cadastros:</p>
+        <insertItem infoId={infoId} setinfoId={setinfoId} CreateItem={CreateItem} UpdateItem={UpdateItem} ExcludeItem={ExcludeItem}/>
         <button>Listar</button>
       </div>
       
