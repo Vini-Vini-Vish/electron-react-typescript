@@ -19,7 +19,12 @@
     "electron:build": "electron-builder -p never --config config/electron-builder.json"
   },
   "dependencies": {
+    "@types/mongodb": "^4.0.7",
+    "bson-ext": "^4.0.2",
     "electron-is-dev": "^2.0.0",
+    "mongo": "^0.1.0",
+    "mongodb": "^4.7.0",
+    "node": "^18.5.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "yarn": "^1.22.19"
