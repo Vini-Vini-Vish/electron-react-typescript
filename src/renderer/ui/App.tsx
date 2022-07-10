@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { InfoItem } from "../../components/InfoItem"
-//import { insertItem } from '../../components/insertItem'
+import { InsertItem } from '../../components/insertItem'
 import { createItem, excludeItem, findAllItem, updateItem } from "../../controller/itemController"
 
 import styles from "./App.module.scss"
@@ -29,7 +29,7 @@ export const App: React.FC = () => {
   }
   const UpdateItem = async(itemId: string, itemName: string) => {
     const item = {"itemName": itemName}
-    //await updateItem(item)
+    await updateItem(itemId, item)
     await listItems()
   }
 
@@ -59,11 +59,11 @@ export const App: React.FC = () => {
         <button>Cadastrar</button>
       </div>
       
-      {/* <div className="listCad">
+      <div className="listCad">
         <p>Lista de Cadastros:</p>
-        <insertItem infoId={infoId} setinfoId={setinfoId} CreateItem={CreateItem} UpdateItem={UpdateItem} ExcludeItem={ExcludeItem}/>
+        <InsertItem infoId={infoId} setinfoId={setinfoId} CreateItem={CreateItem} UpdateItem={UpdateItem} ExcludeItem={ExcludeItem}/>
         <button>Listar</button>
-      </div> */}
+      </div>
       
     </div>
   )
