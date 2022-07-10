@@ -3,27 +3,36 @@ Clone this repo to start a simple Electron app with React and Typescript.
 
 ## Installation
 
-Use yarn to install all dependencies.
+## Intalações Necessarias
 
-```bash
+# comece instalando o node.js e mongoDB 
+
+https://nodejs.org/pt-br/
+https://www.mongodb.com/try/download/community
+
+# instale o yarn pelo comando no terminal
+
+npm install --global yarn
+
+yarn add mongodb
+
+yarn add @types/mongodb 
+
+yarn add node    
+
 yarn
-```
 
 ## Usage
 
-Run the `dev` script to start the project. It will reload with code changes.
+# compile o projeto como desenvolvedor
 
-```bash
 yarn dev
-```
 
 ## Building
 
-Run the `build` script in order to generate the production build to the current OS: 
+# compile o projeto para produção
 
-```bash
-yarn build
-```
+yarn package
 
 ## License
 
@@ -56,29 +65,8 @@ A aplicação deve ser simples, não queremos tomar o seu tempo fazendo uma aval
 Sabemos que fazer o setup de uma aplicação usando Electron + React é bem chatinho, então nosso template deve dar uma boa adiantada pra você criar a aplicação. Ele já é o modelo que usamos aqui, então é bem legal se você já se habituar com ele.
 https://github.com/brcambui/electron-react-typescript
 
-## Intalações Necessarias
+## Arquitetura utilizada no projeto
 
-# comece instalando o node.js e mongoDB 
+# PDF com ilustração das conexões e pastas
 
-https://nodejs.org/pt-br/
-https://www.mongodb.com/try/download/community
-
-# instale o yarn pelo comando no terminal
-
-npm install --global yarn
-
-yarn add mongodb
-
-yarn add @types/mongodb 
-
-yarn add node    
-
-yarn
-
-# compile o projeto como desenvolvedor
-
-yarn dev
-
-# compile o projeto para produção
-
-yarn package
+https://github.com/Vini-Vini-Vish/electron-react-typescript/blob/master/Arquitetura%20da%20estrutura%20do%20projeto.pdf
