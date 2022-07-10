@@ -1,7 +1,10 @@
 import { create, findAll, findOne, update, exclude } from "../service/itemService"
 
 interface Item {
-    itemName: string;
+  itemName: string;
+  itemDesc: string;
+  itemValor: number;
+  itemQuant: number;
 }
 
 export const createItem = (item: Item) => {

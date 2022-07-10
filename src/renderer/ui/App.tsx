@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react"
 
 import { InfoItem } from "../../components/InfoItem"
 import { InsertItem } from '../../components/insertItem'
@@ -22,13 +22,13 @@ export const App: React.FC = () => {
     listItems()
   }, [])
   
-  const CreateItem = async(itemName: string) => {
-    const item = {"itemName": itemName}
+  const CreateItem = async(itemName: string, itemDesc: string, itemValor: number, itemQuant: number) => {
+    const item = {"itemName": itemName, "itemDesc": itemDesc, "itemValor": itemValor, "itemQuant": itemQuant}
     await createItem(item)
     await listItems()
   }
-  const UpdateItem = async(itemId: string, itemName: string) => {
-    const item = {"itemName": itemName}
+  const UpdateItem = async(itemId: string, itemName: string, itemDesc: string, itemValor: number, itemQuant: number) => {
+    const item = {"itemName": itemName, "itemDesc": itemDesc, "itemValor": itemValor, "itemQuant": itemQuant}
     await updateItem(itemId, item)
     await listItems()
   }
@@ -53,16 +53,15 @@ export const App: React.FC = () => {
       <h1>Sistema de Cadastro</h1>
       <h5>Opções da aplicação:</h5>
 
-      <div className="cad">
+      <div>
         <p>Realizar um cadasto:</p>
         <InfoItem infoItem={infoItem} Selection={Selection}/>
-        <button>Cadastrar</button>
+
       </div>
       
-      <div className="listCad">
-        <p>Lista de Cadastros:</p>
-        <InsertItem infoId={infoId} setinfoId={setinfoId} CreateItem={CreateItem} UpdateItem={UpdateItem} ExcludeItem={ExcludeItem}/>
-        <button>Listar</button>
+      <div>
+        <p>Lista de Cadastros:</p>{ 
+        <InsertItem infoId={infoId} setinfoId={setinfoId} CreateItem={CreateItem} UpdateItem={UpdateItem} ExcludeItem={ExcludeItem}/>}
       </div>
       
     </div>

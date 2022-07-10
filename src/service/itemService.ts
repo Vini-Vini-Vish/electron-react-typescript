@@ -3,6 +3,9 @@ import { ObjectId } from "mongodb"
 
 interface Item {
     itemName: string;
+    itemDesc: string;
+    itemValor: number;
+    itemQuant: number;
 }
 
 export const create = async (data: Item) => {

@@ -5,17 +5,23 @@ export const InsertItem = ({ infoId, setinfoId, CreateItem, UpdateItem, ExcludeI
 
     const [itemId, setItemId] = useState<string>(``)
     const [itemName, setitemName] = useState<string>(``)
+    const [itemDesc, setitemDesc] = useState<string>('')
+    const [itemValor, setitemValor] = useState<number>(0)
+    const [itemQuant, setitemQuant] = useState<number>(0)
 
     function clear() {
         setitemName(``)
+        setitemDesc(``)
+        setitemValor(0)
+        setitemQuant(0)
     }
 
-    const inputItem = async (itemName: string) => {
+    const inputItem = async (itemName: string, itemDesc: string, itemValor: number, itemQuant: number) => {
         if(itemId != ''){
-            await CreateItem(itemName)    
+            await CreateItem(itemName, itemDesc, itemValor, itemQuant)    
             clear()
         } else {
-            await UpdateItem(itemId, itemName)
+            await UpdateItem(itemId, itemName, itemDesc, itemValor, itemQuant)    
             clear()
         }
         
@@ -25,6 +31,9 @@ export const InsertItem = ({ infoId, setinfoId, CreateItem, UpdateItem, ExcludeI
         findOneItem(id).then(Item => {
             setItemId(id)
             setitemName(Item!.itemName)
+            setitemName(Item!.itemDesc)
+            setitemName(Item!.itemValor)
+            setitemName(Item!.itemQuant)
             setinfoId(``)
         })       
     }
@@ -35,15 +44,27 @@ export const InsertItem = ({ infoId, setinfoId, CreateItem, UpdateItem, ExcludeI
     }
 
     return (
-        <div className="container">
+        <div>
             {infoId !== `` ? (selectionItem(infoId)) : setinfoId(``)} 
             <div>
                 <text>Nome:</text>
-                <input className="inputName" type="text" placeholder="Nome do item" value={itemName} onChange={(event) => { setitemName(event.target.value) }} />
-            </div>   
+                <input type="text" placeholder="Nome do item" value={itemName} onChange={(event) => { setitemName(event.target.value) }} />
+            </div>  
             <div>
-                <button className="btnInsert" onClick={() => inputItem(itemName)}>Salvar</button>
-                <button className="btnExclude" onClick={() => excludeItem(itemId)}>Excluir</button>
+                <text>Descrição:</text>
+                <input type="text" placeholder="descrição do item" value={itemDesc} onChange={(event) => { setitemDesc(event.target.value) }} />
+            </div>  
+            <div>
+                <text>Valor:</text>
+                <input type="text" placeholder="valor do item" value={itemValor} onChange={(event) => { setitemValor(event.target.valueAsNumber) }} />
+            </div>  
+            <div>
+                <text>Quantidade:</text>
+                <input type="text" placeholder="quantidade do item" value={itemQuant} onChange={(event) => { setitemQuant(event.target.valueAsNumber) }} />
+            </div>  
+            <div>
+                <button onClick={() => inputItem(itemName, itemDesc, itemValor, itemQuant)}>Salvar</button>
+                <button onClick={() => excludeItem(itemId)}>Excluir</button>
             </div>       
         </div>
       )
